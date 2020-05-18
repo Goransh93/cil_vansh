@@ -1,0 +1,48 @@
+Residential Form=>//
+1. Place of agreement =>(Tenanent form address)
+2.Landlord name////
+3.Landlord father name///
+4.Landlord Husband Name (In female case)///
+5.Address (landmark and city and state)///
+ a.street address//
+ c.city//
+ d.state//
+6.tenant name//
+7.tenant father name//
+8.tenant Husband Name (In female case)//
+9.Address (landmark and city and state)//
+ a.street address//
+ c.city//
+ d.state//
+
+10.floor//
+11.Number of Room Set//
+12.Bathrooms//
+13.Area//
+14.No. Of Balconies//
+15.No. Of Car Parking Slots//
+16.purpose of rent//
+17.rent of house per month//
+18.Rent Commencement Date//
+20.Type of Agreement(long term lease,monthly rental)//
+21 duration of agreement (in months)//
+22.rate of rent shall be increased (% in every year)//
+23.(Rent Giving Date) //
+24.purposee of rent => Residential/Commercial/Industrial//
+25.Society Maintenance=>(Electricity Water and Sewer Charges )//
+26.Is Subletting Allowed?//
+27. notice period//
+28.Add the Utilities Here: Like Fan, Tubelights, Almirah //
+
+29.Terms(Pets,Painting,Food,Lock-in Period,)
+ Penalty Clause (a. The Tenant will have to bear the penalty of Rs. _________
+			per Day for Non Payment of Rent 
+
+           b. The Tenant will have to bear the penalty of Rs. _________
+			per Day for (Over Stay )
+          c. The Tenant will have to bear the penalty of Rs. _________
+			per Day for (Late Payment of Rent)
+
+          )
+30. Tenant has deposited Security amounting //
+31. Scurity Deposit Payment Mode (in car DD and Check ask check no)

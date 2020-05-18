@@ -1,0 +1,51 @@
+         <div class="col-md-12">
+           <div class="box box-solid service_row bg-lightgray">
+              <div class="box-header">
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool remove_service_row" style="background-color: burlywood;"><i class="fa fa-times fa-2x"></i></button>
+              </div>
+            </div> 
+            <div class="radio-toolbar">
+                  <div class="form-group">
+                    <div class="row">
+                      <div class=" col-sm-3">
+                        <p class="agrement-title">Name *</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="text" class="inputfield" name="tenant_name_<?php echo $row_index ?>" id="tenant_name_<?php echo $row_index ?>">
+                      </div>
+                    </div>  
+                  </div>
+
+                 <div class="form-group">
+                    <div class="row">
+                      <div class=" col-sm-3">
+                        <p class="agrement-title">Gender*</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="radio" name="tenant_gender_<?php echo $row_index ?>" id="male_tenant_<?php echo $row_index ?>" value="Male">
+                        <label for="male_tenant_<?php echo $row_index ?>" class="label1">
+                          <span>Male</span>
+                        </label>
+                        <input type="radio" name="tenant_gender_<?php echo $row_index ?>" id="female_tenant_<?php echo $row_index ?>" value="Female">
+                        <label for="female_tenant_<?php echo $row_index ?>" class="label2">
+                          <span>Female</span>
+                        </label>
+                      </div>
+                    </div>  
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row">
+                      <div class=" col-sm-3">
+                        <p class="agrement-title">Father's Name</p>
+                      </div>
+                      <div class="col-sm-9">
+                        <input type="text" class="inputfield" name="tenant_father_name_<?php echo $row_index ?>" id="tenant_father_name_<?php echo $row_index ?>">
+                      </div>
+                    </div>  
+                  </div>
+              </div> 
+           </div>
+        </div>
+                           

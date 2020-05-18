@@ -1,0 +1,37 @@
+Commercial Form=>
+1. Place of agreement =>(Tenanent form address)//
+2.Landlord name//
+3.Landlord father name//
+4.Landlord Husband Name (In female case)//
+5.Address (landmark and city and state)//
+ a.street address//
+ c.city//
+ d.state//
+6.tenant name//
+7.tenant father name//
+8.tenant Husband Name (In female case)//
+9.Address (landmark and city and state)//
+ a.street address//
+ c.city//
+ d.state//
+10.Rented Property address//
+11.Number of Offices//
+12.rent of the Shop//
+13.Rent Commencement Date//
+14.Type of Agreement(long term lease,monthly rental)//
+15. duration of agreement (in months)//
+16.rate of rent shall be increased @ __(From User)% after every years //
+17.ask user in dropdown(electricity/Water/any other maintenance//
+18.notice period//
+19.Add the Utilities Here: Like Fan, Tubelights, Almirah/fitting/fixtures etc 
+as per the form//
+20.Terms(Painting,Lock-in Period)//
+Penalty Clause (a. The Tenant will have to bear the penalty of Rs. _________
+			per Day for Non Payment of Rent 
+
+           b. The Tenant will have to bear the penalty of Rs. _________
+			per Day for (Over Stay )
+          c. The Tenant will have to bear the penalty of Rs. _________
+			per Day for (Late Payment of Rent)
+
+          )
