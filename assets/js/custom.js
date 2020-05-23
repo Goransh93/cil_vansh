@@ -303,10 +303,21 @@ function fixStepIndicator(n) {
 }
 
 
+function saveState(step = '') {
+  var rent_form = $('#rentprevieform');
+  var form_url = rent_form.data('save-session-path');
+  /** Ajax call to save changes */
+  $.ajax({
+    url: form_url,
+    type: "POST",
+    data: rent_form.serialize(),
+    success: function(response) {
+      
+    }
+  });
+}
 
-
-function document1(){
- 
+function document1() {
   var purpose_of_renting = $("input[name='purpose_of_renting']:checked").val();
   var type_of_agreement = $("input[name='type_of_agreement']:checked").val();
   var duration_of_agreement = document.getElementById('duration_of_agreement').value;
@@ -315,19 +326,19 @@ function document1(){
   $("#type_of_agreement1").html(type_of_agreement);
   $("#duration_of_agreement1").html(duration_of_agreement);
   $("#type_of_property1").html(type_of_property);
+  saveState();
 }
 
 document.getElementById('landlord_name').addEventListener('input', function () {
-document.getElementById('landlord_name1').innerText = document.getElementById('landlord_name').value;
+  document.getElementById('landlord_name1').innerText = document.getElementById('landlord_name').value;
 })
 
 document.getElementById('landlord_father_name').addEventListener('input', function () {
-document.getElementById('landlord_father_name1').innerText = document.getElementById('landlord_father_name').value;
+  document.getElementById('landlord_father_name1').innerText = document.getElementById('landlord_father_name').value;
 })
 
 
-function document2(){
-  
+function document2() {
   var landlord_name = document.getElementById('landlord_name');
   localStorage.setItem("landlord_name", landlord_name.value);
   var landlord_age = document.getElementById('landlord_age').value;
@@ -338,28 +349,26 @@ function document2(){
   var landlord_city = document.getElementById('landlord_city').value;
   var landlord_state = document.getElementById('landlord_state').value;
   var landlord_pincode = document.getElementById('landlord_pincode').value;
-
-  if(landlord_gender == "Male"){
+  if (landlord_gender == "Male") {
     var landlord_title = "Mr.";
     ('#landlord_husband1').hide();
   }
-   if(landlord_gender == "Female"){
+  if (landlord_gender == "Female") {
     var landlord_title = "Ms.";
     ('#landlord_husband1').show();
-    
   }
   let landlord_name1 =  localStorage.getItem("landlord_name");
   $("#landlord_name1").html(landlord_name1);
   $("#landlord_age1").html(landlord_age);
   $("#landlord_gender1").html(landlord_gender);
-  if(landlord_father_name != ''){
-  $("#landlord_father_name1").html(landlord_father_name);
-  $("#son_of").show();
-  $("#landlord_husband1").hide();
-  }else{
-  $("#landlord_father_name1").html(landlord_husband_name);
-  $("#son_of").hide();
-  $("#landlord_husband1").show();
+  if (landlord_father_name != '') {
+    $("#landlord_father_name1").html(landlord_father_name);
+    $("#son_of").show();
+    $("#landlord_husband1").hide();
+  } else {
+    $("#landlord_father_name1").html(landlord_husband_name);
+    $("#son_of").hide();
+    $("#landlord_husband1").show();
   }
   $("#landlord_street_address1").html(landlord_street_address);
   $("#landlord_city1").html(landlord_city);
@@ -367,21 +376,20 @@ function document2(){
   $("#landlord_pincode1").html(landlord_pincode);
   $("#landlord_title1").html(landlord_title);
 
-   var count_row = document.getElementById('count_row').value;
+  var count_row = document.getElementById('count_row').value;
    //alert(count_row);
-   for (var i = 1; i <= count_row; i++) {
-   var landlord_add_name = document.getElementById('landlord_name_' + i).value;
-   var landlord_father_name_add = document.getElementById('landlord_father_name_' + i).value;
-   var landlord_add_gender = $("input[name=landlord_gender_" + i +"]:checked").val();
-   if(landlord_add_gender == "Male"){
-    var landlord_title_add = "Mr.";  
+  for (var i = 1; i <= count_row; i++) {
+    var landlord_add_name = document.getElementById('landlord_name_' + i).value;
+    var landlord_father_name_add = document.getElementById('landlord_father_name_' + i).value;
+    var landlord_add_gender = $("input[name=landlord_gender_" + i +"]:checked").val();
+    if (landlord_add_gender == "Male") {
+      var landlord_title_add = "Mr.";  
+    } else if (landlord_add_gender == "Female") {
+      var landlord_title_add = "Ms.";   
     }
-   if(landlord_add_gender == "Female"){
-    var landlord_title_add = "Ms.";   
-  }    
-   document.getElementById('landlord_div').innerHTML = '<p style="width: 100%; font-size: 14px;">OR</p><p style="width: 100%; font-size: 14px;">1.<span id="landlord_title1" class = "bold">'+landlord_title_add+'</span> <span id="landlord_name1" class = "bold">'+landlord_add_name+'</span> <span id="son_of" class ="bold"> S/o </span><span class ="bold">Mr.</span><span class ="bold">'+landlord_father_name_add+'</span><span id="landlord_husband1" style="display: none" class = "bold"> W/O </span> <span id="landlord_father_name1" class="bold"></span>(hereinafter jointly and severally called the “Landlord/First Party” which expression shall include his heirs, legal representatives, successors and assigns)</p>';
-   }
-
+    document.getElementById('landlord_div').innerHTML = '<p style="width: 100%; font-size: 14px;">OR</p><p style="width: 100%; font-size: 14px;">1.<span id="landlord_title1" class = "bold">'+landlord_title_add+'</span> <span id="landlord_name1" class = "bold">'+landlord_add_name+'</span> <span id="son_of" class ="bold"> S/o </span><span class ="bold">Mr.</span><span class ="bold">'+landlord_father_name_add+'</span><span id="landlord_husband1" style="display: none" class = "bold"> W/O </span> <span id="landlord_father_name1" class="bold"></span>(hereinafter jointly and severally called the “Landlord/First Party” which expression shall include his heirs, legal representatives, successors and assigns)</p>';
+  }
+  saveState();
 }
 
 function document3(){

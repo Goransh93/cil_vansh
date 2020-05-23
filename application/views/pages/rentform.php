@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-sm-12">
       <h2 class="text-center pt-5 pb-3">Rental agreement</h2>
-      <form method="POST" action="cover/rentpreview" id="rentprevieform">
+      <form method="POST" action="cover/rentpreview" id="rentprevieform" data-save-session-path="<?php echo base_url('cover/rent_form_save_state'); ?>">
         <div class="row boxdesign">
           <div class="col-sm-12">
             <div id="rentform_error"></div>
@@ -27,52 +27,50 @@
                 <h3 class="agreement-hding borderbot ">Agreement Details</h3>
                 <div class="radio-toolbar">
                   <p class="agrement-title">Purpose of Renting *</p>
-                  <input type="radio" name="purpose_of_renting" id="Residential" value="Residential" >
+                  <input <?php if (!empty($rent_form['purpose_of_renting'])) { echo $rent_form['purpose_of_renting'] == 'Residential' ? 'checked' : ''; } ?> type="radio" name="purpose_of_renting" id="Residential" value="Residential" >
                   <label for="Residential" class="label1">
-                      <span>Residential</span>
+                    <span>Residential</span>
                   </label>
-                  <input type="radio" name="purpose_of_renting" id="Commercial" value="Commercial">
-                   <label for="Commercial" class="label2">
-                      <span>Commercial</span>
+                  <input <?php if (!empty($rent_form['purpose_of_renting'])) { echo $rent_form['purpose_of_renting'] == 'Commercial' ? 'checked' : ''; } ?> type="radio" name="purpose_of_renting" id="Commercial" value="Commercial">
+                  <label for="Commercial" class="label2">
+                    <span>Commercial</span>
                   </label>
                 </div>
                 <div class="mt-4 mb-4 borderbot"></div>
 
                 <div class="radio-toolbar">
                   <p class="agrement-title">Type of Agreement</p>
-                  <input type="radio" name="type_of_agreement" id="monthly_rental" value="Monthly Rental" >
+                  <input <?php if (!empty($rent_form['type_of_agreement'])) { echo $rent_form['type_of_agreement'] == 'Monthly Rental' ? 'checked' : ''; } ?> type="radio" name="type_of_agreement" id="monthly_rental" value="Monthly Rental" >
                   <label for="monthly_rental" class="label1">
                       <span>Monthly Rental</span>
                   </label>
-                  <input type="radio" name="type_of_agreement" id="long_term_lease" value="Long Term Lease">
+                  <input <?php if (!empty($rent_form['type_of_agreement'])) { echo $rent_form['type_of_agreement'] == 'Long Term Lease' ? 'checked' : ''; } ?> type="radio" name="type_of_agreement" id="long_term_lease" value="Long Term Lease">
                    <label for="long_term_lease" class="label2">
-                      <span>Long Term Lease</span>
+                    <span>Long Term Lease</span>
                   </label>
                 </div>
                 <div class="mt-4 mb-4 borderbot"></div>
-
                 <div class="form-group">
-                    <div class="row">
-                      <div class=" col-sm-3">
-                        <p class="agrement-title">Duration of Agreement (in months)</p>
-                      </div>
-                      <div class="col-sm-9">
-                        <input type="text" class="inputfield" name="duration_of_agreement" id="duration_of_agreement">
-                      </div>
-                    </div>  
-                  </div>
-
+                  <div class="row">
+                    <div class=" col-sm-3">
+                      <p class="agrement-title">Duration of Agreement (in months)</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <input value="<?php echo (!empty($rent_form['duration_of_agreement'])) ? $rent_form['duration_of_agreement'] : ''; ?>" type="text" class="inputfield" name="duration_of_agreement" id="duration_of_agreement">
+                    </div>
+                  </div>  
+                </div>
                 <div class="radio-toolbar" id="residential_property">
                   <p class="agrement-title">Type of Property</p>
-                  <input type="radio" name="type_of_property" id="house_property" value="House" >
+                  <input <?php if (!empty($rent_form['type_of_property'])) { echo $rent_form['type_of_property'] == 'House' ? 'checked' : ''; } ?> type="radio" name="type_of_property" id="house_property" value="House" >
                   <label for="house_property" class="label1">
                       <span>House</span>
                   </label>
-                  <input type="radio" name="type_of_property" id="apartment_property" value="Apartment">
+                  <input <?php if (!empty($rent_form['type_of_property'])) { echo $rent_form['type_of_property'] == 'Apartment' ? 'checked' : ''; } ?> type="radio" name="type_of_property" id="apartment_property" value="Apartment">
                    <label for="apartment_property" class="label2">
                       <span>Apartment</span>
                   </label>
-                  <input type="radio" name="type_of_property" id="room_property" value="Room">
+                  <input <?php if (!empty($rent_form['type_of_property'])) { echo $rent_form['type_of_property'] == 'Room' ? 'checked' : ''; } ?> type="radio" name="type_of_property" id="room_property" value="Room">
                    <label for="room_property" class="label2">
                       <span>Room</span>
                   </label>
@@ -88,16 +86,13 @@
                    <label for="company_property" class="label2">
                       <span>Company</span>
                   </label>
-                 
                 </div>
-              
-                <input class="next_btn" name="next" type="button" value="Next" onclick="document1();">
+                <input data-current-step="" class="next_btn" name="next" type="button" value="Next" onclick="document1();">
               </fieldset>
               <!-- End Step 1 -->
               <!-- Start Step 2 -->
               <fieldset class="loginbox pt-4 ">
                 <h3 class="agreement-hding borderbot">Landlord Details</h3>
-                
                 <div class="radio-toolbar">
                   <div class="form-group">
                     <div class="row">
@@ -213,7 +208,6 @@
                 </div>
                 <input class="pre_btn" name="previous" type="button" value="Previous">
                 <input class="next_btn" name="next" type="button" value="Next" onclick="document2();">
-                
               </fieldset>
               <!-- End Step 2 -->
 
@@ -913,56 +907,49 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-     
-      <div class="modal-body" id="extra_body">
-   
-       </div>
-            <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+      <form action="#" method="post">
+        <div class="modal-body" id="extra_body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Add Landlord</button>
+        </div>
+      </form>
       </div>
     </div>
   </div>
 </div>
 
-
 <script type="text/javascript">
-  // Add landlord service
-       var count = 0;
-      $('button#add-membership-service-row').click(function() {
-          var formdata_val = "Cover/add_landlord";
-          var count_row = count + 1;
-          count++;
-          $('#count_row').val(count_row);
-        $.ajax({
-            method: 'POST',
-            url: formdata_val,
-            data: { row_index: count_row },
-            dataType: 'html',
-            success: function(response) {
-                if (response) {
-                 $('#extra').modal('show'); 
-                $('#extra_body').append(response); 
-                }
-
-
-            },
-        });
+  var count = 0;
+  $('button#add-membership-service-row').click(function() {
+    var formdata_val = "<?php echo base_url('cover/add_landlord'); ?>";
+    var count_row = count + 1;
+    count++;
+    $('#count_row').val(count_row);
+    $.ajax({
+      method: 'POST',
+      url: formdata_val,
+      data: { row_index: count_row },
+      dataType: 'html',
+      success: function(response) {
+        if (response) {
+          $('#extra').modal('show');
+          $('#extra_body').html(response);
+        }
+      }
     });
-    $(document).on('click', '.remove_service_row', function() {
-        swal({
-            title: "Are you sure",
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-        }).then(willDelete => {
-            if (willDelete) {
-                $(this)
-                    .closest('.service_row')
-                    .remove();
-            }
-        });
+  });
+  $(document).on('click', '.remove_service_row', function() {
+    swal({
+      title: "Are you sure",
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then(willDelete => {
+      if (willDelete) {
+        $(this).closest('.service_row').remove();
+      }
     });
+  });
 </script>
 <script type="text/javascript">
   // Add tenant service
@@ -1027,20 +1014,23 @@ count = 0;
 });
 /*---------------------------------------------------------*/
 $(".next_btn").click(function() { // Function Runs On NEXT Button Click
-$(this).parent().next().fadeIn('slow');
-$(this).parent().css({
-'display': 'none'
+  $(this).parent().next().fadeIn('slow');
+  $(this).parent().css({
+    'display': 'none'
+  });
+  // Adding Class Active To Show Steps Forward;
+  var active_step = $('#progressbar li.active');
+  active_step.removeClass('active');
+  active_step.next().addClass('active');
 });
-// Adding Class Active To Show Steps Forward;
-$('.active').next().addClass('active');
-});
-$(".pre_btn").click(function() { // Function Runs On PREVIOUS Button Click
-$(this).parent().prev().fadeIn('slow');
-$(this).parent().css({
-'display': 'none'
-});
-// Removing Class Active To Show Steps Backward;
-$('.active:last').removeClass('active');
+$(".pre_btn").click(function() {
+  $(this).parent().prev().fadeIn('slow');
+  $(this).parent().css({
+    'display': 'none'
+  });
+  var active_step = $('#progressbar li.active');
+  active_step.removeClass('active');
+  active_step.prev().addClass('active');
 });
 
 });
@@ -1067,7 +1057,7 @@ $('.active:last').removeClass('active');
     
 </script>
 <script type="text/javascript">
-  $("input[name='purpose_of_renting']").click(function(){
+  $("input[name='purpose_of_renting']").click(function() {
     // alert($("input[name='purpose_of_renting']:checked").val());
     if($("input[name='purpose_of_renting']:checked").val() == "Residential"){
       $("#room_set").show();
