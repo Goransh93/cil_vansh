@@ -11,13 +11,13 @@
             <div id="rentform_error"></div>
             <!-- Progress Bar -->
             <ul id="progressbar" class="rentaltoplist">
-              <li class="active">Agreement</li>
-              <li>Landlord</li>
-              <li>Tenant</li>
-              <li>Property</li>
-              <li>Rent</li>
-              <li>Terms</li>
-              <li>Utilities</li>
+              <li data-index="0"class="active stepWizard">Agreement</li>
+              <li data-index="1" class="stepWizard">Landlord</li>
+              <li data-index="2" class="stepWizard">Tenant</li>
+              <li data-index="3" class="stepWizard">Property</li>
+              <li data-index="4" class="stepWizard">Rent</li>
+              <li data-index="5" class="stepWizard">Terms</li>
+              <li data-index="6" class="stepWizard">Utilities</li>
             </ul>    
           </div>
           <div class="col-md-6">
@@ -122,7 +122,7 @@
                         <p class="agrement-title">Gender  *</p>
                       </div>
                       <div class="col-sm-9">
-                        <input type="radio" name="landlord_gender" id="male_landlord" value="Male">
+                        <input type="radio" name="landlord_gender" id="male_landlord" value="Male" >
                         <label for="male_landlord" class="label1">
                           <span>Male</span>
                         </label>
@@ -206,6 +206,7 @@
               </div>
                </div>
                 </div>
+                <div id="extra_landlord_section"></div>
                 <input class="pre_btn" name="previous" type="button" value="Previous">
                 <input class="next_btn" name="next" type="button" value="Next" onclick="document2();">
               </fieldset>
@@ -910,7 +911,9 @@
       <form action="#" method="post">
         <div class="modal-body" id="extra_body"></div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Add Landlord</button>
+          <input type="hidden" id="model_action_type" value="add">
+          <input type="hidden" id="item_id" value="">
+          <button type="button" class="btn btn-primary" id="btn_add_landlord_model">Add Landlord</button>
         </div>
       </form>
       </div>
@@ -1013,6 +1016,49 @@ count = 0;
 
 });
 /*---------------------------------------------------------*/
+
+var activeTabs=[0];
+var lastActiveTab = 0;
+var flag = 0;
+$(".stepWizard").click(function() {
+  console.log(activeTabs);
+      let indx = $(this).attr("data-index");
+      $(".stepWizard").removeClass("active");
+      $("form#rentprevieform fieldset").each((ind, item)=>{
+       // console.log(item)
+        if(+indx === ind && activeTabs.includes(ind)){
+            $(this).addClass("active");
+            $(item).css('display', 'block');
+            flag = 1;  
+        }
+        else if(activeTabs.includes(ind)){
+           console.log(ind);
+              $(item).css('display', 'none'); 
+        }
+
+      });
+      console.log(new Date(), lastActiveTab);
+      if(flag === 0){
+
+         $("form#rentprevieform fieldset").each((ind, item)=>{
+              if(ind===lastActiveTab){
+                  $(item).css('display', 'block');
+              }
+
+          });
+          $(".stepWizard").each((ind, item)=>{
+            let tabInd = $(item).attr("data-index")
+              if(ind === +tabInd){
+                  $(item).addClass('active');
+              }
+
+          }) 
+       }
+       flag=0;
+       
+    // rentprevieform
+
+ }); 
 $(".next_btn").click(function() { // Function Runs On NEXT Button Click
   $(this).parent().next().fadeIn('slow');
   $(this).parent().css({
@@ -1022,6 +1068,14 @@ $(".next_btn").click(function() { // Function Runs On NEXT Button Click
   var active_step = $('#progressbar li.active');
   active_step.removeClass('active');
   active_step.next().addClass('active');
+  // console.log(active_step);
+  // console.log(active_step.next());
+  let indx = active_step.next().attr("data-index");
+  if(!activeTabs.includes(+indx) ) {
+    activeTabs.push(+indx);
+    lastActiveTab = +indx; 
+  }
+  
 });
 $(".pre_btn").click(function() {
   $(this).parent().prev().fadeIn('slow');
@@ -1040,9 +1094,9 @@ $(".pre_btn").click(function() {
 
 <!-- Fix terms box -->
 
-<script type="text/javascript" src="<?php echo base_url('assets/js/rAF.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/ResizeSensor.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/sticky-sidebar.js') ?>"></script>
+<!-- <script type="text/javascript" src="<?php echo base_url('assets/js/rAF.js') ?>"></script> -->
+<!-- <script type="text/javascript" src="<?php echo base_url('assets/js/ResizeSensor.js') ?>"></script> -->
+<!-- <script type="text/javascript" src="<?php echo base_url('assets/js/sticky-sidebar.js') ?>"></script> -->
 <script type="text/javascript" src="<?php echo base_url('assets/js/custom.js') ?>">
   $(window).on("load resize", function() {
      if ($(window).width() >= 769) {  
@@ -1141,9 +1195,11 @@ $(".pre_btn").click(function() {
 
   $("input[name='landlord_gender']").click(function(){
     if($("input[name='landlord_gender']:checked").val() == "Female"){
+     $("#landlord_wifeof").show(); 
      $("#landlord_husband_name_val").show();
      $("#tenant_husband_name_val").hide();
     }else{
+      $("#landlord_wifeof").hide();
       $("#landlord_husband_name_val").hide();
       $("#tenant_husband_name_val").show();
     }
@@ -1232,13 +1288,124 @@ document.getElementById('landlord_father_name').addEventListener('input', functi
 document.getElementById('landlord_father_name1').innerText = document.getElementById('landlord_father_name').value;
 })
 
+
 // male female
 
 $(function () {
+
+// adding additional landlord
+  $('#btn_add_landlord_model').on('click', function(){
+     let formAction = $('#extra form input#model_action_type').val();
+     if(formAction=="edit"){
+         let sectionid = $('#extra form input#item_id').val();
+         let landlord_updated_name =  document.getElementById('additional_landlord_name').value;
+         let landlord_updated_father_name = document.getElementById('additional_landlord_father_name').value;
+         let additionalLandlordDetail = window.sessionStorage.getItem("additionalLandlordList");
+         let newDetails = additionalLandlordDetail && JSON.parse(additionalLandlordDetail).map((data,idx) => {
+              if(idx === +sectionid ){
+                data.name =   landlord_updated_name;
+                data.father_name =   landlord_updated_father_name;
+
+              }
+              return data;
+        });
+            window.sessionStorage.setItem("additionalLandlordList", JSON.stringify(newDetails));
+            additionalLandlordHelper(newDetails);
+            $('#extra').modal('hide');
+
+      
+     }  
+     else{
+
+          let additional_landlord = {};
+         let additional_landlord_list=[];
+         let temp = window.sessionStorage.getItem("additionalLandlordList");
+         if (temp)
+         {
+            let existing_list = JSON.parse(temp);
+            additional_landlord['name'] =  document.getElementById('additional_landlord_name').value;
+            additional_landlord['father_name'] = document.getElementById('additional_landlord_father_name').value;
+            
+            existing_list.push(additional_landlord);
+            window.sessionStorage.setItem("additionalLandlordList", JSON.stringify(existing_list));
+         } 
+         else
+         {
+            additional_landlord['name'] =  document.getElementById('additional_landlord_name').value;
+            additional_landlord['father_name'] =  document.getElementById('additional_landlord_father_name').value;
+            additional_landlord_list.push(additional_landlord);
+            window.sessionStorage.setItem("additionalLandlordList", JSON.stringify(additional_landlord_list));
+         }
+         
+          let additionalLandlordDetail = window.sessionStorage.getItem("additionalLandlordList");
+          let landlordSectionHtml = "";
+           additionalLandlordDetail && additionalLandlordHelper(additionalLandlordDetail, true); 
+          $('#extra').modal('hide');
+       
+    }
+     
+      
+  });
+
+    $('body').on('click', '.extra_landlord_action', function(e){ 
+      e.preventDefault();
+      let curObj = $(this)[0];
+      let actionType = $(curObj).attr("data-action");
+      let sectionid = $(curObj).attr("data-sectionid")
+      let additionalLandlordDetail = window.sessionStorage.getItem("additionalLandlordList");
+      if(actionType =="delete"){
+             let newDetails = additionalLandlordDetail && JSON.parse(additionalLandlordDetail).filter((data,idx) => {
+              return idx!== +sectionid
+
+            });
+            window.sessionStorage.setItem("additionalLandlordList", JSON.stringify(newDetails));
+            additionalLandlordHelper(newDetails);
+           
+      }else{
+            let data = additionalLandlordDetail && JSON.parse(additionalLandlordDetail)
+            let editData = data[sectionid];
+             console.log(editData); 
+             $('#extra form input#additional_landlord_name').val(editData.name);
+             $('#extra form input#additional_landlord_father_name').val(editData.father_name);
+             $('#extra form input#model_action_type').val("edit");
+             $('#extra form input#item_id').val(sectionid);
+             $('#extra form #exampleModalLongTitle, #extra form #btn_add_landlord_model').text("Edit Landlord");
+             $('#extra').modal('show');
+
+      }
+
+    });
+
+    function additionalLandlordHelper(detailsObj, parseJSON=false){
+          let dataObj = parseJSON ? JSON.parse(detailsObj) : detailsObj;
+          let landlordSectionHtml = "";
+          let details = dataObj.map((data,idx) => {
+          let info = `${data.name} c/o ${data.father_name}`;
+          landlordSectionHtml += `<div id="extraLandlord_${idx}" data-sectionid="${idx}"><span class="extraLandlord">${info}  </span> <span class="extraLandlordAction"><a href="javascript:void(0);" class="extra_landlord_action" data-action="edit" data-sectionid="${idx}">Edit</a> <a href="javascript:void(0);" class="extra_landlord_action" data-action="delete" data-sectionid="${idx}">Delete</a></span> </div>`  
+          return info; 
+          });
+      
+      if(details.length>0)
+      {
+            document.getElementById('additional_landlord').innerText = details.join(" & ");
+            document.getElementById('extra_landlord_section').innerHTML = landlordSectionHtml; 
+      }
+      else{
+            document.getElementById('additional_landlord').innerText = "";
+            document.getElementById('extra_landlord_section').innerHTML = "";
+          }
+    }
+
+
+
+
     $('input:radio[name="landlord_gender"]').change(function () {
       if ($(this).val() == 'Male') {
         var landlord_title = 'Mr.';
         document.getElementById('landlord_title1').innerText =  landlord_title;
+        document.getElementById('landlord_husband_name').value = "";
+        document.getElementById('landlord_husband1').innerText= "";
+
       } else {
          var landlord_title = 'Ms.';
          document.getElementById('landlord_title1').innerText =  landlord_title;
@@ -1300,7 +1467,9 @@ $(function () {
     }
 
   });
+
   });
+
 
   tenant_husband_name.addEventListener('input', function () {
     
@@ -1482,6 +1651,8 @@ $('#penalty_clause_1_terms').show();
   }
 
 }) 
+
+
 
 
 

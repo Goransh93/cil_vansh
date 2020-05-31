@@ -68,6 +68,206 @@
   //   $("#out_increment_rp").text(rp_increment);
   //     })
   //   })
+$(document).ready(function () {
+  // session storage in landlord.
+  var readlandlorddetail = JSON.parse(sessionStorage.getItem("landlorddetail"));
+document.getElementById('landlord_name1').innerText = readlandlorddetail.landlord_name;
+document.getElementById('landlord_name').value = readlandlorddetail.landlord_name;
+document.getElementById('landlord_father_name1').innerText = readlandlorddetail.landlord_father_name;
+document.getElementById('landlord_father_name').value = readlandlorddetail.landlord_father_name;
+document.getElementById('landlord_street_address1').innerText = readlandlorddetail.landlord_street_address;
+document.getElementById('landlord_street_address').value = readlandlorddetail.landlord_street_address;
+document.getElementById('landlord_city1').innerText = readlandlorddetail.landlord_city;
+document.getElementById('landlord_city').value = readlandlorddetail.landlord_city;
+document.getElementById('landlord_state1').innerText = readlandlorddetail.landlord_state;
+document.getElementById('landlord_state').value = readlandlorddetail.landlord_state;
+document.getElementById('landlord_pincode1').innerText = readlandlorddetail.landlord_pincode;
+document.getElementById('landlord_pincode').value = readlandlorddetail.landlord_pincode;
+document.getElementById('landlord_age').value = readlandlorddetail.landlord_age;
+ if(readlandlorddetail.landlord_husband_name.length>0 ){
+
+    document.getElementById('landlord_husband1').innerText = 'w/o ' + readlandlorddetail.landlord_husband_name;  
+  }
+  else{
+    document.getElementById('landlord_husband1').innerText = readlandlorddetail.landlord_husband_name;
+  }
+
+ if(readlandlorddetail.landlord_gender == "Male" ){
+    document.getElementById("male_landlord").checked = true;
+    document.getElementById('landlord_title1').innerText = "Mr";
+    
+  }
+  else{
+    document.getElementById("female_landlord").checked = true;
+    document.getElementById('landlord_title1').innerText = "Ms";
+   
+  }
+document.getElementById('landlord_age').value = readlandlorddetail.landlord_age;
+
+
+// session storage in tenant form.
+  var readtenantdetail = JSON.parse(sessionStorage.getItem("tenantdetail"));
+
+  console.log(readtenantdetail);
+document.getElementById('tenant_name2').innerText = readtenantdetail.tenant_name;
+document.getElementById('tenant_name').value = readtenantdetail.tenant_name;
+document.getElementById('tenant_father_name2').innerText = readtenantdetail.tenant_father_name;
+document.getElementById('tenant_father_name').value = readtenantdetail.tenant_father_name;
+document.getElementById('tenant_street_address2').innerText = readtenantdetail.tenant_street_address;
+document.getElementById('tenant_street_address').value = readtenantdetail.tenant_street_address;
+document.getElementById('tenant_city2').innerText = readtenantdetail.tenant_city;
+document.getElementById('tenant_city').value = readtenantdetail.tenant_city;
+document.getElementById('tenant_state2').innerText = readtenantdetail.tenant_state;
+document.getElementById('tenant_state').value = readtenantdetail.tenant_state;
+document.getElementById('tenant_pincode2').innerText = readtenantdetail.tenant_pincode;
+document.getElementById('tenant_pincode').value = readtenantdetail.tenant_pincode;
+document.getElementById('tenant_age').value = readtenantdetail.tenant_age;
+
+if(readtenantdetail.tenant_gender == "Male" ){
+    document.getElementById("male_tenant").checked = true;
+    document.getElementById('tenant_title2').innerText = "Mr";
+    
+  }
+  else{
+    document.getElementById("female_tenant").checked = true;
+    document.getElementById('tenant_title1').innerText = "Ms";
+   
+  }
+
+// document.getElementById('tenant_name2').innerText = window.sessionStorage.getItem("tenant_name");
+// document.getElementById('tenant_name').value = window.sessionStorage.getItem("tenant_name");
+
+// document.getElementById('tenant_father_name2').innerText = window.sessionStorage.getItem("tenant_father_name");
+// document.getElementById('tenant_father_name').value = window.sessionStorage.getItem("tenant_father_name");
+
+// document.getElementById('tenant_street_address2').innerText = window.sessionStorage.getItem("tenant_street_address");
+// document.getElementById('tenant_street_address').value = window.sessionStorage.getItem("tenant_street_address");
+
+// document.getElementById('tenant_city2').innerText = window.sessionStorage.getItem("tenant_city");
+// document.getElementById('tenant_city').value = window.sessionStorage.getItem("tenant_city");
+
+// document.getElementById('tenant_state2').innerText = window.sessionStorage.getItem("tenant_state");
+// document.getElementById('tenant_state').value = window.sessionStorage.getItem("tenant_state");
+
+// document.getElementById('tenant_pincode2').innerText = window.sessionStorage.getItem("tenant_state");
+// document.getElementById('tenant_pincode').value = window.sessionStorage.getItem("tenant_pincode");
+
+//  if(document.getElementById('tenant_husband_name').value.length>0 ){
+//   document.getElementById('tenant_husband2').innerText = 'w/o' + window.sessionStorage.getItem("tenant_husband_name");  
+//   }
+//   else{
+//    document.getElementById('tenant_husband2').innerText = window.sessionStorage.getItem("tenant_husband_name");
+//   }
+// document.getElementById('tenant_husband_name').value = window.sessionStorage.getItem("tenant_husband_name");
+
+// document.getElementById('tenant_title2').innerText = window.sessionStorage.getItem("tenant_title");
+// document.getElementById('tenant_title').value = window.sessionStorage.getItem("tenant_title");
+
+
+// document.getElementById('tenant_id_cardno2').innerText = window.sessionStorage.getItem("tenant_id_cardno");
+// document.getElementById('tenant_id_cardno').value = window.sessionStorage.getItem("tenant_id_cardno");
+
+
+// document.getElementById('tenant_identity_doc_name2').innerText = window.sessionStorage.getItem("tenant_identity_doc_name");
+// document.getElementById('tenant_identity_doc_name').value = window.sessionStorage.getItem("tenant_identity_doc_name");
+
+
+// document.getElementById('tenant_age').value = window.sessionStorage.getItem("tenant_age");
+
+
+
+})
+
+// var currentTab = 2; // Current tab is set to be the first tab (0)
+// showTab(currentTab); // Display the current tab
+// function showTab(n) {
+//   // This function will display the specified tab of the form...
+//   var x = document.getElementsByClassName("tab");
+//     x[n].style.display = "block";
+//   //... and fix the Previous/Next buttons:
+//   if (n == 0) {
+//     document.getElementById("prevBtn").style.display = "none";
+//   } else {
+//     document.getElementById("prevBtn").style.display = "inline";
+//   }
+//   if (n == (x.length - 1)) {
+//     document.getElementById("nextBtn").style.display = "none";
+//     document.getElementById("submit").style.display = "block";
+//   } else {
+//     document.getElementById("nextBtn").innerHTML = "Next";
+//   }
+//   //... and run a function that will display the correct step indicator:
+//   fixStepIndicator(n)
+// }
+
+// function nextPrev(n) {
+//   // This function will figure out which tab to display
+//   var x = document.getElementsByClassName("tab");
+//   // Exit the function if any field in the current tab is invalid:
+//   if (n == 1 && !validateForm()) return false;
+//   // Hide the current tab:
+//   x[currentTab].style.display = "none";
+//   // Increase or decrease the current tab by 1:
+//   currentTab = currentTab + n;
+//   // if you have reached the end of the form...
+//   if (currentTab >= x.length) {
+//     // ... the form gets submitted:
+//     document.getElementById("regForm").submit();
+//     return false;
+//   }
+//   // Otherwise, display the correct tab:
+//   showTab(currentTab);
+// }
+
+// function validateForm() {
+//   // This function deals with validation of the form fields
+//   var x, y, i, valid = true;
+//   x = document.getElementsByClassName("tab");
+//   y = x[currentTab].getElementsByTagName("input");
+//   // A loop that checks every input field in the current tab:
+//   for (i = 0; i < y.length; i++) {
+//     // If a field is empty...
+//     if (y[i].value == "") {
+//       // add an "invalid" class to the field:
+//       y[i].className += " invalid";
+//       // and set the current valid status to false
+//       valid = false;
+//     }
+//   }
+//   // If the valid status is true, mark the step as finished and valid:
+//   if (valid) {
+//     document.getElementsByClassName("step")[currentTab].className += " finish";
+//   }
+//   return valid; // return the valid status
+// }
+
+// function fixStepIndicator(n) {
+//   // This function removes the "active" class of all steps...
+//   var i, x = document.getElementsByClassName("step");
+//   for (i = 0; i < x.length; i++) {
+//     x[i].className = x[i].className.replace(" active", "");
+//   }
+//   //... and adds the "active" class on the current step:
+//   x[n].className += " active";
+// }
+
+
+// function saveState(step = '') {
+//   var rent_form = $('#rentprevieform');
+//   var form_url = rent_form.data('save-session-path');
+//   /** Ajax call to save changes */
+//   $.ajax({
+//     url: form_url,
+//     type: "POST",
+//     data: rent_form.serialize(),
+//     success: function(response) {
+      
+//     }
+//   });
+// }
+
+
+
 
   function submitFormData(){
 
@@ -128,7 +328,7 @@
   var monthly_maintaince = document.getElementById('monthly_maintaince').value;
   var security_deposit_payment_mode = document.getElementById('security_deposit_payment_mode').value;
   var rent_amount = document.getElementById('rent_amount').value;
-  var rent_amount_word = (inWords(rent_amount));
+  var rent_amount_word =  ( inWords(rent_amount) );
   var dd_check_value = document.getElementById('dd_check_value').value;
   var date_of_commencement = document.getElementById('date_of_commencement').value;
   var rate_of_rent_percent = document.getElementById('rate_of_rent_percent').value;
@@ -229,95 +429,10 @@
                         })
             }
 
-var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
-function showTab(n) {
-  // This function will display the specified tab of the form...
-  var x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").style.display = "none";
-    document.getElementById("submit").style.display = "block";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
-  }
-  //... and run a function that will display the correct step indicator:
-  fixStepIndicator(n)
-}
 
-function nextPrev(n) {
-  // This function will figure out which tab to display
-  var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
-  // Hide the current tab:
-  x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
-  currentTab = currentTab + n;
-  // if you have reached the end of the form...
-  if (currentTab >= x.length) {
-    // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
-  // Otherwise, display the correct tab:
-  showTab(currentTab);
-}
-
-function validateForm() {
-  // This function deals with validation of the form fields
-  var x, y, i, valid = true;
-  x = document.getElementsByClassName("tab");
-  y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
-  for (i = 0; i < y.length; i++) {
-    // If a field is empty...
-    if (y[i].value == "") {
-      // add an "invalid" class to the field:
-      y[i].className += " invalid";
-      // and set the current valid status to false
-      valid = false;
-    }
-  }
-  // If the valid status is true, mark the step as finished and valid:
-  if (valid) {
-    document.getElementsByClassName("step")[currentTab].className += " finish";
-  }
-  return valid; // return the valid status
-}
-
-function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
-  var i, x = document.getElementsByClassName("step");
-  for (i = 0; i < x.length; i++) {
-    x[i].className = x[i].className.replace(" active", "");
-  }
-  //... and adds the "active" class on the current step:
-  x[n].className += " active";
-}
-
-
-function saveState(step = '') {
-  var rent_form = $('#rentprevieform');
-  var form_url = rent_form.data('save-session-path');
-  /** Ajax call to save changes */
-  $.ajax({
-    url: form_url,
-    type: "POST",
-    data: rent_form.serialize(),
-    success: function(response) {
-      
-    }
-  });
-}
 
 function document1() {
+
   var purpose_of_renting = $("input[name='purpose_of_renting']:checked").val();
   var type_of_agreement = $("input[name='type_of_agreement']:checked").val();
   var duration_of_agreement = document.getElementById('duration_of_agreement').value;
@@ -326,71 +441,48 @@ function document1() {
   $("#type_of_agreement1").html(type_of_agreement);
   $("#duration_of_agreement1").html(duration_of_agreement);
   $("#type_of_property1").html(type_of_property);
-  saveState();
+
+
+
+
+   
 }
-
-document.getElementById('landlord_name').addEventListener('input', function () {
-  document.getElementById('landlord_name1').innerText = document.getElementById('landlord_name').value;
-})
-
-document.getElementById('landlord_father_name').addEventListener('input', function () {
-  document.getElementById('landlord_father_name1').innerText = document.getElementById('landlord_father_name').value;
-})
 
 
 function document2() {
-  var landlord_name = document.getElementById('landlord_name');
-  localStorage.setItem("landlord_name", landlord_name.value);
+
+  var landlord_name = document.getElementById('landlord_name').value;
   var landlord_age = document.getElementById('landlord_age').value;
   var landlord_gender = $("input[name='landlord_gender']:checked").val();
   var landlord_father_name = document.getElementById('landlord_father_name').value;
-  var landlord_husband_name = document.getElementById('landlord_husband_name').value;
+  var landlord_husband_name = document.getElementById('landlord_husband_name').value; 
   var landlord_street_address = document.getElementById('landlord_street_address').value;
   var landlord_city = document.getElementById('landlord_city').value;
   var landlord_state = document.getElementById('landlord_state').value;
   var landlord_pincode = document.getElementById('landlord_pincode').value;
   if (landlord_gender == "Male") {
     var landlord_title = "Mr.";
-    ('#landlord_husband1').hide();
   }
-  if (landlord_gender == "Female") {
+  else 
+  {
     var landlord_title = "Ms.";
-    ('#landlord_husband1').show();
-  }
-  let landlord_name1 =  localStorage.getItem("landlord_name");
-  $("#landlord_name1").html(landlord_name1);
-  $("#landlord_age1").html(landlord_age);
-  $("#landlord_gender1").html(landlord_gender);
-  if (landlord_father_name != '') {
-    $("#landlord_father_name1").html(landlord_father_name);
-    $("#son_of").show();
-    $("#landlord_husband1").hide();
-  } else {
-    $("#landlord_father_name1").html(landlord_husband_name);
-    $("#son_of").hide();
-    $("#landlord_husband1").show();
-  }
-  $("#landlord_street_address1").html(landlord_street_address);
-  $("#landlord_city1").html(landlord_city);
-  $("#landlord_state1").html(landlord_state);
-  $("#landlord_pincode1").html(landlord_pincode);
-  $("#landlord_title1").html(landlord_title);
+   }
+   landlorddetail= {};
+   landlorddetail.landlord_name = landlord_name;
+   landlorddetail.landlord_gender = landlord_gender;
+   landlorddetail.landlord_father_name = landlord_father_name;
+   landlorddetail.landlord_age = landlord_age;
+   landlorddetail.landlord_street_address = landlord_street_address;
+   landlorddetail.landlord_city = landlord_city;
+   landlorddetail.landlord_state = landlord_state;
+   landlorddetail.landlord_pincode = landlord_pincode;
+   landlorddetail.landlord_husband_name = landlord_husband_name;
+   sessionStorage.setItem("landlorddetail", JSON.stringify(landlorddetail) )
+   
 
-  var count_row = document.getElementById('count_row').value;
-   //alert(count_row);
-  for (var i = 1; i <= count_row; i++) {
-    var landlord_add_name = document.getElementById('landlord_name_' + i).value;
-    var landlord_father_name_add = document.getElementById('landlord_father_name_' + i).value;
-    var landlord_add_gender = $("input[name=landlord_gender_" + i +"]:checked").val();
-    if (landlord_add_gender == "Male") {
-      var landlord_title_add = "Mr.";  
-    } else if (landlord_add_gender == "Female") {
-      var landlord_title_add = "Ms.";   
-    }
-    document.getElementById('landlord_div').innerHTML = '<p style="width: 100%; font-size: 14px;">OR</p><p style="width: 100%; font-size: 14px;">1.<span id="landlord_title1" class = "bold">'+landlord_title_add+'</span> <span id="landlord_name1" class = "bold">'+landlord_add_name+'</span> <span id="son_of" class ="bold"> S/o </span><span class ="bold">Mr.</span><span class ="bold">'+landlord_father_name_add+'</span><span id="landlord_husband1" style="display: none" class = "bold"> W/O </span> <span id="landlord_father_name1" class="bold"></span>(hereinafter jointly and severally called the “Landlord/First Party” which expression shall include his heirs, legal representatives, successors and assigns)</p>';
   }
-  saveState();
-}
+ 
+
 
 function document3(){
 
@@ -411,50 +503,34 @@ function document3(){
   }else{
     var tenant_title = 'Ms.';
   }
-    
-  $("#tenant_name1").html(tenant_name);
-  $("#tenant_age1").html(tenant_age);
-  $("#tenant_gender1").html(tenant_gender);
-  $("#tenant_name2").html(tenant_name);
-  $("#tenant_age2").html(tenant_age);
-  $("#tenant_gender2").html(tenant_gender);
-   if(tenant_father_name != ''){
-  $("#tenant_father_name1").html(tenant_father_name);
-  $("#tenant_father_name2").html(tenant_father_name);
-   $("#son_of2").show();
-  $("#tenant_husband1").hide();
-  }else{
-  $("#tenant_father_name1").html(tenant_husband_name);
-   $("#tenant_father_name2").html(tenant_husband_name);
-  $("#son_of2").hide();
-  $("#tenant_husband1").show();
-  }
-  $("#tenant_id_cardno1").html(tenant_id_cardno);
-  $("#tenant_identity_doc_name1").html(tenant_identity_doc_name); 
-  $("#tenant_street_address1").html(tenant_street_address);
-  $("#tenant_street_address2").html(tenant_street_address);
-  $("#tenant_city1").html(tenant_city);
-  $("#tenant_city2").html(tenant_city);
-  $("#tenant_state1").html(tenant_state);
-  $("#tenant_state2").html(tenant_state);
-  $("#tenant_pincode1").html(tenant_pincode);
-  $("#tenant_pincode2").html(tenant_pincode);
-  $("#tenant_title1").html(tenant_title);
-  $("#tenant_title2").html(tenant_title);
+  var tenantdetail = {};
+  tenantdetail.tenant_name = tenant_name;
+  tenantdetail.tenant_father_name = tenant_father_name;
+  tenantdetail.tenant_age = tenant_age;
+  tenantdetail.tenant_street_address = tenant_street_address;
+  tenantdetail.tenant_city = tenant_city;
+  tenantdetail.tenant_state = tenant_state;
+  tenantdetail.tenant_pincode = tenant_pincode;
+  tenantdetail.tenant_gender = tenant_gender;
+  tenantdetail.tenant_husband_name = tenant_husband_name;
+  tenantdetail.tenant_id_cardno = tenant_id_cardno;
+  tenantdetail.tenant_identity_doc_name = tenant_identity_doc_name;
+  sessionStorage.setItem('tenantdetail', JSON.stringify(tenantdetail));
 
-   var tenant_count_row = document.getElementById('tenant_count_row').value;
-   for (var i = 1; i <= tenant_count_row; i++) {
-   var tenant_add_name = document.getElementById('tenant_name_' + i).value;
-   var tenant_father_name_add = document.getElementById('tenant_father_name_' + i).value; 
-   var tenant_add_gender = $("input[name=tenant_gender_" + i +"]:checked").val();
-   if(tenant_add_gender == "Male"){
-    var tenant_title_add = "Mr.";  
-    }
-   if(tenant_add_gender == "Female"){
-    var tenant_title_add = "Ms.";   
-   }    
-   document.getElementById('tenant_div').innerHTML = '<p style="width: 100%; font-size: 14px;">OR</p><p style="width: 100%; font-size: 14px;">2.<span class = "bold">'+tenant_title_add+'</span><span  class = "bold">'+ tenant_add_name +'</span>  <span class = "bold"> S/o </span><span  class = "bold"> Mr. </span><span class = "bold">'+tenant_father_name_add+'</span> <span  style="display: none" class = "bold"> W/O </span>(hereinafter jointly and severally called the “Tenant” which expression shall include his heirs, legal representatives, successors and assigns)</p>';
-  }
+   // sessionStorage.setItem('tenant_name', tenant_name );
+   // sessionStorage.setItem('tenant_father_name', tenant_father_name);
+   // sessionStorage.setItem('tenant_age', tenant_age);
+   // sessionStorage.setItem('tenant_street_address', tenant_street_address);
+   // sessionStorage.setItem('tenant_city', tenant_city);
+   // sessionStorage.setItem('tenant_state', tenant_state);
+   // sessionStorage.setItem('tenant_pincode', tenant_pincode);
+   // sessionStorage.setItem('tenant_title', tenant_title);
+   // sessionStorage.setItem('tenant_husband_name', tenant_husband_name);
+   // sessionStorage.setItem('tenant_age', tenant_age);
+   // sessionStorage.setItem('tenant_id_cardno', tenant_id_cardno);
+   // sessionStorage.setItem('tenant_identity_doc_name', tenant_identity_doc_name);
+  
+
 }
 
 function document4(){

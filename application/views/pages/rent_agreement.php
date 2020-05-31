@@ -9,12 +9,12 @@
 between:- </p>
 
 
-<p style="width: 100%; font-size: 14px;">1.<span id="landlord_title1" class = "bold">_______</span> <span id="landlord_name1" class = "bold">___</span>  <span id="landlord_husband1" class = "bold">  </span> <span id="son_of" class = "bold"> S/o </span> <span id="landlord_father_name1" class="bold">___</span>R/o <span id="landlord_street_address1" class = "bold">___</span>,<span id="landlord_city1" class = "bold">___</span>-<span id="landlord_pincode1" class = "bold">___</span>
-<span id="landlord_state1" class = "bold">___</span>
+<p style="width: 100%; font-size: 14px;">1.<span id="landlord_title1" class = "bold">_______</span> <span id="landlord_name1" class = "bold">___</span> <span id="landlord_husband1" class = "bold">  </span> <span id="son_of" class = "bold"> S/o </span> <span id="landlord_father_name1" class="bold">___</span>R/o <span id="landlord_street_address1" class = "bold">___</span>,<span id="landlord_city1" class = "bold">___</span>-<span id="landlord_pincode1" class = "bold">___</span>
+<span id="landlord_state1" class = "bold">___</span> 
 (hereinafter jointly and severally called the “Landlord/First Party” which expression shall include his heirs, legal representatives, successors and assigns)</p>
+<div id="additional_landlord"></div>
 
 
-<div id="landlord_div"></div>
 
 <p style="width: 100%; font-size: 14px;">AND</p>
 

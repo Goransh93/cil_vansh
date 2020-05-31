@@ -2,7 +2,7 @@
 
 class User extends MY_Controller
 {
-public function index1()
+public function index()
 	{
 		$this->load->model('articlesmodel', 'articles');
 		$this->load->library('pagination');

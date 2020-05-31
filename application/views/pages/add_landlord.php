@@ -7,7 +7,7 @@
             <p class="agrement-title">Name *</p>
           </div>
           <div class="col-sm-9">
-            <input type="text" class="inputfield" name="additional_landlord_name[]">
+            <input type="text" class="inputfield" name="additional_landlord_name" id="additional_landlord_name">
           </div>
         </div>  
       </div>
@@ -22,7 +22,7 @@
               <span>Male</span>
             </label>
             <input type="radio" name="additional_landlord_gender" id="additional_landlord_gender_female" value="Female">
-            <label for="additional_landlord_gender_female" class="label2">
+            <label for="additional_landlord_gender_female"class="label2">
               <span>Female</span>
             </label>
           </div>
@@ -34,7 +34,7 @@
             <p class="agrement-title">Father's Name</p>
           </div>
           <div class="col-sm-9">
-            <input type="text" class="inputfield" name="landlord_father_name_<?php echo $row_index ?>" id="landlord_father_name_<?php echo $row_index ?>">
+            <input type="text" class="inputfield" name="additional_landlord_father_name" id="additional_landlord_father_name">
           </div>
         </div>  
       </div>

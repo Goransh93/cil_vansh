@@ -35,6 +35,7 @@ class Cover extends My_Controller{
     $data['main_content'] = 'pages/rentform';
     $data['rent_form'] = $rent_form;
     $this->load->view('template', $data);
+
   }
 
   public function rent_form_save_state() {
@@ -88,6 +89,8 @@ class Cover extends My_Controller{
     $rent_form['security_deposit_payment_mode'] = $this->input->post('security_deposit_payment_mode');	
     $rent_form['rent_amount'] = $this->input->post('rent_amount');	
     $rent_form['rent_amount_word'] = $this->input->post('rent_amount_word');
+    print_r( $rent_form['rent_amount_word']);
+    die();
     $rent_form['dd_check_value'] = $this->input->post('dd_check_value');
     $rent_form['date_of_commencement'] = $this->input->post('date_of_commencement');	    	
     $rent_form['rate_of_rent_percent'] = $this->input->post('rate_of_rent_percent');	
@@ -103,15 +106,17 @@ class Cover extends My_Controller{
     $rent_form['created_at'] = date('Y-m-d H:i:s');				
     $inserted_id    = insert_data('rent_form',$rent_form);	
     if($inserted_id  != ''){
+
       $response['user_id']    =  $inserted_id;
       $response['status']      = 1;
       $response['message']     = 'Data inserted';
+
     }else{
       $response['status']      = 2;
       $response['message']     = 'Something is wrong please try again after some time'; 
     }
     
-    echo json_encode($response);
+    json_encode($response);
     
   }
   
